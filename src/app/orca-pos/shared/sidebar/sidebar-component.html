@@ -1,37 +1,33 @@
-<div class="min-h-screen flex">
-  <!-- Sidebar -->
-  <div class="bg-base-200 text-base-content w-80 min-h-screen p-4 flex flex-col border-r border-base-300">
-    <!-- Encabezado -->
-    <div class="mb-8 text-center">
-      <h2 class="text-3xl text-primary uppercase font-bold mb-2">ORCA-POS-VENTA</h2>
-      <p class="text-sm">Bienvenido al punto de venta <span class="text-secondary font-medium">ORCA-POS</span></p>
+<div class="min-h-screen flex bg-base-100">
+  <!-- Sidebar Moderno -->
+  <div class="bg-base-200 text-base-content w-80 min-h-screen p-6 flex flex-col border-r border-base-300 rounded-r-3xl shadow-lg">
+    <!-- Encabezado con logo/avatar -->
+    <div class="mb-8 text-center flex flex-col items-center">
+      <h2 class="text-3xl text-primary uppercase font-bold mb-2 tracking-wide">ORCA-POS-VENTA</h2>
+      <p class="text-sm text-base-content/70">Bienvenido al punto de venta <span class="text-secondary font-semibold">ORCA-POS</span></p>
     </div>
 
-    <!-- Menú -->
-    <ul class="menu flex-1 w-full">
+    <!-- Menú Moderno -->
+    <ul class="menu flex-1 w-full space-y-2">
       @for (links of link; track links.route) {
-        <li class="mb-1 p-[6px]">
-          <a [routerLink]="links.route" class="flex items-center gap-3 py-3 px-4 rounded-lg hover:bg-secondary transition-colors"
-             routerLinkActive="bg-primary text-white"
-             [routerLinkActiveOptions]="{ exact: true }"
-            >
-            <i [class]="links.icon">
-              <span class="m-[10px] text-mono tracking-widest">{{links.text}}</span>
-            </i>
-
+        <li>
+          <a [routerLink]="links.route"
+             class="flex items-center gap-4 py-3 px-5 rounded-xl hover:bg-secondary hover:text-white transition-all duration-200 shadow-sm"
+             routerLinkActive="bg-primary text-white shadow-md"
+             [routerLinkActiveOptions]="{ exact: true }">
+            <i [class]="links.icon + ' text-xl'"></i>
+            <span class="font-medium tracking-wide">{{links.text}}</span>
           </a>
         </li>
       }
     </ul>
 
-    <!-- Footer opcional -->
-    <div class="mt-auto pt-4 text-center text-xs text-base-content/60">
+    <!-- Footer Moderno -->
+    <div class="mt-auto pt-6 text-center text-xs text-base-content/50 border-t border-base-300">
       Versión 1.0.0
     </div>
   </div>
-
   <!-- Contenido principal -->
-  <div class="flex-1">
+  <div class="flex-1 overflow-auto max-h-screen">
     <router-outlet></router-outlet>
   </div>
-</div>

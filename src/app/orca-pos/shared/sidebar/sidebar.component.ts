@@ -6,8 +6,8 @@ import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
   selector: 'app-sidebar',
   imports: [
     RouterLink,
-    RouterOutlet,
-    RouterLinkActive
+    RouterLinkActive,
+    RouterOutlet
   ],
   templateUrl: './sidebar-component.html'
 })
