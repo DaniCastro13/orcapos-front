@@ -1,18 +1,29 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {UsuariosService} from '../../core/services/usuarios.service';
 import {User} from '../../models/User';
+import {NavigationEnd, Router, RouterLink, RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-users',
-  imports: [],
+  imports: [
+    RouterLink,
+    RouterOutlet
+  ],
   templateUrl: './users.component.html'
 })
 export class UsersComponent implements OnInit {
 
-  constructor(private usuariosService: UsuariosService) {}
+  isAddUser = false;
+
+  constructor(private usuariosService: UsuariosService, private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.isAddUser = this.router.url.includes('/add-user');
+      }
+    })
+  }
 
   users: User[] = [];
-
 
   ngOnInit() {
     this.getUsers();

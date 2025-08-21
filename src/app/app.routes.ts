@@ -16,7 +16,13 @@ export const routes: Routes = [
     children: [
       {
         path: 'usuarios',
-        component: UsersComponent
+        component: UsersComponent,
+        children: [
+          {
+            path: 'add-user',
+            loadComponent: () => import('./orca-pos/components/users/add-user/add-user.component'),
+          }
+        ]
       }
     ]
   },
