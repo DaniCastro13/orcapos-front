@@ -9,9 +9,11 @@ import {User} from '../../models/User';
 })
 export class UsuariosService {
 
-  private URL_API = 'http://localhost:8080/users/getUsers';
+  private URL_API = 'http://localhost:8080/users';
 
   constructor(private http: HttpClient) { }
+
+
 
   getUsers(): Observable<User[]> {
     const token = localStorage.getItem('token');
@@ -19,7 +21,16 @@ export class UsuariosService {
       'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json'
     });
-    return this.http.get<User[]>(`${this.URL_API}`, {headers: headers});
+    return this.http.get<User[]>(`${this.URL_API}/getUsers`, {headers: headers});
+  }
+
+  saveUser(user: User): Observable<User> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    });
+    return this.http.post<User>(`${this.URL_API}/saveUser`, user, {headers: headers});
   }
 
 }

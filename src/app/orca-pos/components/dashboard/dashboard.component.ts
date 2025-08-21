@@ -5,7 +5,8 @@ import {RouterOutlet} from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   imports: [
-    SidebarComponent
+    SidebarComponent,
+    RouterOutlet
   ],
   templateUrl: './dashboard.component.html'
 })

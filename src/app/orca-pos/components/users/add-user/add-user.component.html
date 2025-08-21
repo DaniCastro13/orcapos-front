@@ -1,0 +1,73 @@
+<div class="mx-10">
+  <div class="flex justify-between items-center">
+    <div>
+      <h2 class="text-xl uppercase">Agregar <span class="uppercase text-2xl text-secondary font-black">Usuario</span></h2>
+      <p class="my-2">Agregue la siguiente informacion que se le solicita para ingresar un nuevo usuario</p>
+    </div>
+    <div>
+      <button class="btn btn-primary">
+        <a [routerLink]="'/dashboard/usuarios'" class="uppercase text-white font-bold">Regresar</a>
+      </button>
+    </div>
+  </div>
+  <div class="mt-10">
+    <h3 class="text-lg font-bold text-center">Informacion del usuario</h3>
+    <form #formUsuarios (ngSubmit)="onSubmit()">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+        <div class="flex flex-col mb-4">
+          <label class="label">Nombre: </label>
+          <input class="input input-success" [ngModel]="user.nombre" name="nombre" required>
+        </div>
+        <div class="flex flex-col mb-4">
+          <label class="label">Apellido Paterno: </label>
+          <input class="input input-success" [ngModel]="user.apellidoPaterno" name="apellidoPaterno" required>
+        </div>
+        <div class="flex flex-col mb-4">
+          <label class="label">Apellido Materno: </label>
+          <input class="input input-success" [ngModel]="user.apellidoMaterno" name="apellidoMaterno" required>
+        </div>
+        <div class="flex flex-col mb-4">
+          <label class="label">Edad: </label>
+          <input type="number" class="input input-success" [ngModel]="user.edad" name="edad" required>
+        </div>
+        <div class="flex flex-col mb-4">
+          <label class="label">Direccion: </label>
+          <input class="input input-success" [ngModel]="user.direccion" name="direccion" required>
+        </div>
+        <div class="flex flex-col mb-4">
+          <label class="label">Username: </label>
+          <input class="input input-success" [ngModel]="user.username" name="username" required>
+        </div>
+        <div class="flex flex-col mb-4">
+          <label class="label">Password: </label>
+          <input type="password" class="input input-success" [ngModel]="user.password" name="password" required>
+        </div>
+        <div class="flex flex-col mb-4">
+          <label class="label">Correo Electronico: </label>
+          <input class="input input-success" type="email" [ngModel]="user.correoElectronico" name="correoElectronico" required>
+        </div>
+        <div class="flex flex-col mb-4">
+          <label class="label">RolService: </label>
+          <select class="select select-primary" [ngModel]="rol" name="rol" required>
+            <option disabled selected>--Seleccione una opcion--</option>
+            @for (rol of rol; track rol.idRol) {
+              <option [value]="rol.idRol">{{rol.nombreRol}}</option>
+            }
+          </select>
+        </div>
+        <div class="flex flex-col mb-4">
+          <label class="label">¿Desea mantener activo este usuario?</label>
+          <div class="flex items-center gap-2">
+            <input type="radio" name="activo" class="radio radio-primary" value="true" [ngModel]="user.activo"/>
+            <span>Si</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <input type="radio" name="activo" class="radio radio-primary" value="false" [ngModel]="user.activo"/>
+            <span>No</span>
+          </div>
+        </div>
+      <button type="submit" class="btn btn-primary uppercase">Registrar Usuario</button>
+      </div>
+    </form>
+  </div>
+</div>
